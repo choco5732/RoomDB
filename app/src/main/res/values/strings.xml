@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RoomPractice</string>
+    <string name="btn_add">db add하기</string>
+    <string name="txt_hello">안녕 세상아!</string>
+</resources>
