@@ -25,9 +25,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         // db 안에 내용 show하기
-       binding.btnShow.setOnClickListener {
-           show()
-       }
+        binding.btnShow.setOnClickListener {
+            show()
+        }
 
         binding.btnAdd.setOnClickListener {
             add()
@@ -43,9 +43,8 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     private fun add() {
-        val text = binding.tvDb.text.toString()
+        val text = "반갑수다"
         val mean = "대충 반갑다는 뜻"
         val type = "동사"
         val word = Word(text = text, mean = mean, type = type)
@@ -57,6 +56,7 @@ class MainActivity : AppCompatActivity() {
             }
         }.start()
     }
+
     private fun show() {
         Thread {
             val data = AppDatabase.getInstance(this)?.wordDao()?.getAll()
@@ -65,6 +65,7 @@ class MainActivity : AppCompatActivity() {
             }
         }.start()
     }
+
     private fun delete() {
         Thread {
             AppDatabase.getInstance(this)?.wordDao()?.getLatestWord()?.let { data ->
@@ -75,9 +76,13 @@ class MainActivity : AppCompatActivity() {
             }
         }.start()
     }
+
     private fun update() {
         Thread {
-            AppDatabase.getInstance(this)?.wordDao()?.update(Word(id = 9, text="업데이또!", mean = "대충 업데이트 됬다는 말", type = "완성"))
+            val lastWord =
+                AppDatabase.getInstance(this)?.wordDao()?.getLatestWord() ?: return@Thread
+            AppDatabase.getInstance(this)?.wordDao()
+                ?.update(lastWord.copy(text = "바까주이소", mean = "바꼈다는 뜻", type = "신속|정확"))
             runOnUiThread {
                 Toast.makeText(this, "업데이트 완료", Toast.LENGTH_SHORT).show()
             }
