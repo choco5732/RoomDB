@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">RoomPractice</string>
-    <string name="btn_add">db add하기</string>
-    <string name="txt_hello">안녕 세상아!</string>
+    <string name="txt_db_content">db 속 내용</string>
+    <string name="btn_add">더해주이소</string>
+    <string name="btn_show">보여주이소</string>
+    <string name="btn_delete">삭제해주이소</string>
+    <string name="btn_update">바까주이소</string>
 </resources>
